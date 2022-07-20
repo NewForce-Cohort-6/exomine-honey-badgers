@@ -13,7 +13,7 @@ document.addEventListener(
     (event) => {
         const itemclicked = event.target
         if (itemclicked.id === "orderButton") {
-            addCustomOrder()
+            addMineralOrder()
         }
     }
 )
