@@ -7,7 +7,7 @@ import { Facility } from "./Facilities.js"
 import { Minerals } from "./Minerals.js"
 import { Orders } from "./MineralOrders.js"
 
-//when customer clicks "Purchase Mineral," we need to store their choices permanently. Use customOrder state and addCustomOrder to click event
+//when customer clicks "Purchase Mineral," we need to store their choices permanently. Use transientState and addMineralOrder to click event
 document.addEventListener(
     "click",
     (event) => {
