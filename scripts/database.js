@@ -32,7 +32,7 @@ const database = {
         {id:  6, name: "Iron"},
         {id:  7, name: "Gold"}
     ],
-    chosenMinerals: [
+    mineralOrders: [
         {id:  1, colonyId:  1, mineralId: 1}
     ],
     facilityMinerals: [
@@ -93,14 +93,14 @@ export const addMineralOrder = () => {
     const newOrder = {...database.transientState}
  
     // Add a new primary key to the object
-    const lastIndex = database.chosenMinerals.length - 1
-    newOrder.id = database.chosenMinerals[lastIndex].id + 1
+    const lastIndex = database.mineralOrders.length - 1
+    newOrder.id = database.mineralOrders[lastIndex].id + 1
  
     // Add a timestamp to the order
     newOrder.timestamp = Date.now()
  
     // Add the new order object to custom orders state
-    database.chosenMinerals.push(newOrder)
+    database.mineralOrders.push(newOrder)
  
     // Reset the temporary state for user choices
     database.transientState = {}
