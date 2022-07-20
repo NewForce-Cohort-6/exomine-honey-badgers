@@ -5,9 +5,11 @@
 //this module receives information from MineralOrders about how much remaining qty of mineral to display
 //import { getInfoFunctionNameHere } from "./MineralOrders.js" obv rename
 
-import { getFacilities, setFacility } from "./database.js";
+import { getFacilities, setFacility, getMinerals, get facilityMinerals, getFacilityMinerals } from "./database.js";
 
 const facilities = getFacilities()
+const minerals = getMinerals()
+const facilityMinerals = getFacilityMinerals()
 
 // Given the user wants to purchase minerals for a colony
 // When that colony's governor has been chosen
@@ -35,8 +37,37 @@ export const Facility = () => {
 // Then the list of available minerals should appear
 // And the available amount should be displayed next to the name of the mineral, if there are more than 0 of that mineral available
 
+document.addEventListener(
+    "change",
+    (e) => {
+        if (e.target.id === 'facilityChoices') {
+            setFacility(parseInt(e.target.value))
+        // call a function? from what i'm doing line 50 /radiobuttons?
 
+        }
+    }
+)
 
+//write function that if (facility is chosen) {display radio buttons}
+export const Minerals = () => {
+    
+}
+//will this change ExomineHTML if we call Minerals() inside this event listener? So I won't be calling it again?
+
+/*export const Minerals = () => {
+    let html = "<ul>"
+    // Use .map() for converting objects to <li> elements
+    const items = facilityMinerals.map(mineral => {
+        return `<li>
+            <input type="radio" name="mineral" value="${mineral.id}" />${mineral.quantity} tons of ${mineral.name}
+        </li>`
+        })
+    html += items.join("")
+    html += "</ul>"
+    return html
+    
+}
+ */
 // Given the user wants to purchase from another facility
 // When the user chooses a different facility
 // Then the last chosen facility's minerals should not be rendered
