@@ -32,7 +32,7 @@ const database = {
         {id:  6, name: "Iron"},
         {id:  7, name: "Gold"}
     ],
-    mineralOrders: [
+    chosenMinerals: [
         {id:  1, colonyId:  1, mineralId: 1}
     ],
     facilityMinerals: [
