@@ -30,18 +30,19 @@ export const ExomineHTML = () => {
             <section class="colonies">
                 <section>${"Colony"}</section>
             </section>
-        </article>
-        <article id="lower">
             <section class="facilities">
                 <h2>Choose a facility</h2>
                 <section>${"Facility"}</section>
             </section>
+        </article>
+        <article id="lower">
             <section class="minerals">
-                <section>${"Minerals"}</section>
+                <h2>Facility Minerals for ?</h2>
+                <section>${Minerals()}</section>
             </section>
             <section class="spaceCart">
                 <h2>Space Cart</h2>
-                <div class= "ton">Space Holder</div>
+                <div class= "ton">Place Holder</div>
                 <button id="orderButton">Purchase Mineral</button>
                 <section>${"Orders"}</section>
             </section>

@@ -111,4 +111,7 @@ export const addMineralOrder = () => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 };
 
+export const getCurrentState = () => {
+    return document.transientState
+}
 

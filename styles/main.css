@@ -18,3 +18,17 @@ h1,h2,h3,h4,h5,h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
 }
+
+.minerals {
+	border: 1px dotted black
+}
+.spaceCart {
+	border: 1px dotted coral;
+}
+
+
+#lower {
+	border: 3px solid green;
+	flex: wrap;
+	flex-wrap: wrap
+}
