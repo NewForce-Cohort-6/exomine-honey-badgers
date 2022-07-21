@@ -6,7 +6,7 @@
 // import { Facility } from "./Facilities.js"
 // import { Minerals } from "./Minerals.js"
 import { Orders } from "./MineralOrders.js"
-import {addMineralOrder} from "./database.js"
+import { addMineralOrder } from "./database.js"
 
 //when customer clicks "Purchase Mineral," we need to store their choices permanently. Use transientState and addMineralOrder to click event
 document.addEventListener(
@@ -26,26 +26,28 @@ export const ExomineHTML = () => {
         <article id="upper">
             <section class="governors">
                 <h2>Choose a governor</h2>
-                <section>${"Governors"}</section>
-            </section>
-            <section class="colonies">
-                <section>${"Colony"}</section>
-            </section>
-        </article>
-        <article id="lower">
-            <section class="facilities">
-                <h2>Choose a facility</h2>
-                <section>${"Facility"}</section>
-            </section>
-            <section class="minerals">
-                <section>${"Minerals"}</section>
-            </section>
-            <section class="spaceCart">
-                <h2>Space Cart</h2>
-                <button id="orderButton">Purchase Mineral</button>
-                <section>${Orders()}</section>
-            </section>
-        </article>
-    `
+                <section>${Governors()}</section>
+                    </section>
+                    <section class="colonies">
+                        <h2 id="taco">Colonies</h2>
+                        <section id="colonyMineral"></section>
+                        <section>${Colony()}</section>
+                    </section>
+                </article>
+                <article id="lower">
+                    <section class="facilities">
+                        <h2>Choose a facility</h2>
+                        <section>${Facility()}</section>
+                    </section>
+                    <section class="minerals">
+                        <section>${Minerals()}</section>
+                    </section>
+                    <section class="spaceCart">
+                        <h2>Space Cart</h2>
+                        <button id="orderButton">Purchase Mineral</button>
+                        <section>${Orders()}</section>
+                    </section>
+                </article>
+                        `
 }
 

@@ -109,4 +109,13 @@ export const addMineralOrder = () => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 };
 
+// t.Slater added a setGovernor function with her ticket code for use in governors module; added getTransientState function
+export const setGovernor = (id) => {
+    database.transientState.colonyId = id
+};
+
+export const getCurrentState = () => {
+    return database.transientState
+};
+
 
