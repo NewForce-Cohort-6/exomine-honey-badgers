@@ -5,7 +5,7 @@
 //this module receives information from MineralOrders about how much remaining qty of mineral to display
 //import { getInfoFunctionNameHere } from "./MineralOrders.js" obv rename
 
-import { getFacilities, setFacility, getMinerals, getFacilityMinerals } from "./database.js";
+import { getFacilities, setFacility, getMinerals, getFacilityMinerals, getCurrentState } from "./database.js";
 
 const facilities = getFacilities()
 
@@ -15,10 +15,12 @@ const facilities = getFacilities()
 //check with Tabatha about Governors.js to see what "proof" I can use that governor has been selected. And/or export a function to Governors that can go in... the Event Listener?
 
 //this generates <select> element with child <option> for facilities
-let governor = 1
+
 
 export const Facility = () => {
-    if (governor === 1) {
+//    let currentState = getCurrentState()
+// with just if(currentState) we have all dropdown all the time
+    // if (currentState.colonyId) {
     let html = `<select id="facilityChoices">`
     html += `<></option>`
     const listFacilities = facilities.map( (facility) => {
@@ -26,10 +28,10 @@ export const Facility = () => {
             return `<option value="${facility.id}">${facility.name}</option>`
         }
     })
-    html += listFacilities.join("")
-    html += `</select>`
-    return html
-    }
+            html += listFacilities.join("")
+            html += `</select>`
+            return html
+    //}
 }
 
 // Given the user wants to purchase from a specific facility

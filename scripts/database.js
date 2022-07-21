@@ -84,10 +84,6 @@ export const setFacility = (id) => {
     database.transientState.facilityId = id
 }
  
-export const setColony = (id) => {
-    database.transientState.colonyId = id
-}
-
 export const addMineralOrder = () => {
     // Copy the current state of user choices
     const newOrder = {...database.transientState}
@@ -111,6 +107,9 @@ export const addMineralOrder = () => {
 
 // t.Slater added a setGovernor function with her ticket code for use in governors module; added getTransientState function
 export const setGovernor = (id) => {
+    database.transientState.governorId = id
+};
+export const setColony = (id) => {
     database.transientState.colonyId = id
 };
 
