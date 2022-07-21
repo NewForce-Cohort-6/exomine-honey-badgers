@@ -111,7 +111,13 @@ export const addMineralOrder = () => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 };
 
+
+export const setGovernor = (id) => {
+    database.transientState.colonyId = id
+};
+
 export const getCurrentState = () => {
-    return document.transientState
-}
+    return database.transientState
+};
+
 
