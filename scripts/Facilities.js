@@ -5,11 +5,9 @@
 //this module receives information from MineralOrders about how much remaining qty of mineral to display
 //import { getInfoFunctionNameHere } from "./MineralOrders.js" obv rename
 
-import { getFacilities, setFacility, getMinerals, get facilityMinerals, getFacilityMinerals } from "./database.js";
+import { getFacilities, setFacility, getMinerals, getFacilityMinerals } from "./database.js";
 
 const facilities = getFacilities()
-const minerals = getMinerals()
-const facilityMinerals = getFacilityMinerals()
 
 // Given the user wants to purchase minerals for a colony
 // When that colony's governor has been chosen
@@ -17,41 +15,43 @@ const facilityMinerals = getFacilityMinerals()
 //check with Tabatha about Governors.js to see what "proof" I can use that governor has been selected. And/or export a function to Governors that can go in... the Event Listener?
 
 //this generates <select> element with child <option> for facilities
+let governor = 1
 
 export const Facility = () => {
+    if (governor === 1) {
     let html = `<select id="facilityChoices">`
-    html = `<option value="0">Choose a Facility</option>`
+    html += `<></option>`
     const listFacilities = facilities.map( (facility) => {
         if (facility.activeStatus === true) {
-        return `<option value="${facility.id}">${facility.name}</option>`
+            return `<option value="${facility.id}">${facility.name}</option>`
         }
     })
     html += listFacilities.join("")
     html += `</select>`
+    return html
+    }
 }
-
-
 
 // Given the user wants to purchase from a specific facility
 // When the user chooses a facility
 // Then the list of available minerals should appear
 // And the available amount should be displayed next to the name of the mineral, if there are more than 0 of that mineral available
 
-document.addEventListener(
-    "change",
-    (e) => {
-        if (e.target.id === 'facilityChoices') {
-            setFacility(parseInt(e.target.value))
-        // call a function? from what i'm doing line 50 /radiobuttons?
+// document.addEventListener(
+//     "change",
+//     (e) => {
+//         if (e.target.id === 'facilityChoices') {
+//             setFacility(parseInt(e.target.value))
+//         // call a function? from what i'm doing line 50 /radiobuttons?
 
-        }
-    }
-)
+//         }
+//     }
+// )
 
 //write function that if (facility is chosen) {display radio buttons}
-export const Minerals = () => {
+// export const Minerals = () => {
     
-}
+// }
 //will this change ExomineHTML if we call Minerals() inside this event listener? So I won't be calling it again?
 
 /*export const Minerals = () => {
@@ -74,3 +74,18 @@ export const Minerals = () => {
 // And the list of available minerals should appear for the currently chosen facility
 
 // Hint: You need to filter the array of facility minerals on the facilityId foreign key as the first step. It should match the id of the facility chosen by the user. Where do you store which facility was chosen by the user?
+
+
+// export const Facility = () => {
+//     let html = `<select id="facilityChoices">`
+//     html += `<option value="0">Choose a facility</option>`
+
+//     const listFacilities = facilities.map( (facility) => {
+//         return `<option value="${facility.id}">${facility.name}</option>`
+//     })
+//     html += listFacilities.join("")
+//     html += `</select>`
+//     return html
+// }
+//const minerals = getMinerals()
+//const facilityMinerals = getFacilityMinerals()
