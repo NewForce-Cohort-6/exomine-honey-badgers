@@ -8,7 +8,7 @@
 
 //this module generates html
 
-import { getGovernors, setGovernor, getColonies, getCurrentState, getMineralOrders, getMinerals } from "./database.js"
+import { getGovernors, setGovernor, getColonies, getCurrentState, getMineralOrders, getMinerals, setColony } from "./database.js"
 const govs = getGovernors();
 const colony = getColonies();
 
@@ -16,14 +16,19 @@ const colony = getColonies();
 // build and export a function to generate a select element that has child elements representing each object in the governor array as html
 export const Governors = () => {
     let html = ""
-
+    let currentState = getCurrentState()
     html += `<select id="govern">`
     html += `<option value="0">Select a governor</option>`
-
+console.log(currentState)
     const options = govs.map((gov) => {
         if (gov.activeStatus === true) {
+            if (gov.colonyId === currentState.colonyId && gov.id === currentState.governorId){
+                return `<option name="${gov.id}" value="${gov.id}-${gov.colonyId}" selected >${gov.name}</option>`
+            } else {
+                return `<option name="${gov.id}" value="${gov.id}-${gov.colonyId}">${gov.name}</option>`
+
+            }
             // value should be colonyId since that is what you reference later to match to colony
-        return `<option value="${gov.colonyId}">${gov.name}</option>`
         }
     })
         html += options.join("")
@@ -31,22 +36,32 @@ export const Governors = () => {
         return html
 
 };
+export const nameColony = () => {
+    let currentState = getCurrentState()
+    if (currentState.colonyId) {
 
+        for (const col of colony) {
+            if (currentState.colonyId === col.id) {
+                return col.name
+                
+            } 
+        }
 
+} else {
+    return "Colony"
+}
+}
 
 // Listener for choosing governor from dropdown that sets off chain of events that lists associated colony
 document.addEventListener(
     "change",
     (event) => {
         if (event.target.id === "govern") {
-            setGovernor(parseInt(event.target.value))
-            
+            setGovernor(parseInt(event.target.value.split("-")[0]))
+            setColony(parseInt(event.target.value.split("-")[1]))
+        
             // get the current state of governor (you need the colonyId)
-            let currentState = getCurrentState()
-                for (const col of colony) {
-                    if (currentState.colonyId === col.id) {
-            document.querySelector("#taco").innerHTML = col.name
-        }
+
         };
             let minerals = getMinerals()
             let mineralOrds = getMineralOrders()
@@ -61,6 +76,8 @@ document.addEventListener(
                 }
                 }
                 }
-        }
+                // Broadcast a notification that permanent state has changed
+                document.dispatchEvent(new CustomEvent("stateChanged"))
+        
 
     });
