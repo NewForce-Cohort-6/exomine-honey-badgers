@@ -18,14 +18,14 @@ export const Governors = () => {
     let html = ""
     let currentState = getCurrentState()
     html += `<select id="govern">`
-    html += `<option value="0">Select a governor</option>`
+    html += `<option value="0">Select a Governor</option>`
 console.log(currentState)
     const options = govs.map((gov) => {
         if (gov.activeStatus === true) {
             if (gov.colonyId === currentState.colonyId && gov.id === currentState.governorId){
-                return `<option name="${gov.id}" value="${gov.id}-${gov.colonyId}" selected >${gov.name}</option>`
+                return `<option value="${gov.id}-${gov.colonyId}" selected >${gov.name}</option>`
             } else {
-                return `<option name="${gov.id}" value="${gov.id}-${gov.colonyId}">${gov.name}</option>`
+                return `<option value="${gov.id}-${gov.colonyId}">${gov.name}</option>`
 
             }
             // value should be colonyId since that is what you reference later to match to colony
@@ -43,10 +43,8 @@ export const nameColony = () => {
         for (const col of colony) {
             if (currentState.colonyId === col.id) {
                 return col.name
-                
             } 
         }
-
 } else {
     return "Colony"
 }
@@ -63,21 +61,34 @@ document.addEventListener(
             // get the current state of governor (you need the colonyId)
 
         };
-            let minerals = getMinerals()
-            let mineralOrds = getMineralOrders()
-            let mineralState = getCurrentState()
-                for (const item of mineralOrds) {
-                    if (mineralState.colonyId === item.colonyId) {
-                        for (const min of minerals) {
-                            if (min.id === item.mineralId) {
-                        
-                        document.querySelector("#colonyMineral").innerHTML = min.name
-                    }
-                }
-                }
-                }
+      
                 // Broadcast a notification that permanent state has changed
                 document.dispatchEvent(new CustomEvent("stateChanged"))
-        
+});
 
-    });
+
+export const makeMineralList = () => {
+    let minerals = getMinerals()
+    let mineralOrds = getMineralOrders()
+    let mineralState = getCurrentState()
+    //tommy code
+        const filteredForColony = mineralOrds.filter(x => x.colonyId === mineralState.colonyId)
+        console.log(filteredForColony)
+        const findMinerals = filteredForColony.map( filteredObj => minerals.find(singleMineral => singleMineral.id === filteredObj.mineralId))
+        console.log(findMinerals)
+    // pretty much same as below
+
+        let html = ""
+        for (const item of mineralOrds) {
+            if (mineralState.colonyId === item.colonyId) {
+                for (const min of minerals) {
+                    if (min.id === item.mineralId) {
+                        // change the p tags if you wish
+                html += `<p>${min.name}</p>`
+            }
+        }
+        }
+        }
+        return html
+    
+}
