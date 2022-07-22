@@ -33,7 +33,7 @@ const database = {
         {id:  7, name: "Gold"}
     ],
     mineralOrders: [
-        {id:  1, colonyId:  1, mineralId: 1}
+        {id:  1, colonyId:  1, mineralId: 2}
     ],
     facilityMinerals: [
         {id:  1, facilityId:  1, mineralId:  1, quantity: 54},
