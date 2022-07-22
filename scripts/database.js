@@ -34,7 +34,7 @@ const database = {
     ],
     mineralOrders: [
         {id:  1, colonyId:  1, mineralId: 1}
-    ],
+    ],//can we add facility this comes from?
     facilityMinerals: [
         {id:  1, facilityId:  1, mineralId:  1, quantity: 54},
         {id:  2, facilityId:  1, mineralId:  3, quantity: 75},
