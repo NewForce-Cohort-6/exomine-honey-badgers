@@ -33,9 +33,7 @@ const database = {
         {id:  7, name: "Gold"}
     ],
     mineralOrders: [
-        {id:  1, colonyId:  1, mineralId: 1},
-        {id:  2, colonyId:  1, mineralId: 1},
-        {id:  3, colonyId:  1, mineralId: 4},
+        {id:  1, colonyId:  1, mineralId: 1}
     ],
     facilityMinerals: [
         {id:  1, facilityId:  1, mineralId:  1, quantity: 54},
@@ -86,10 +84,6 @@ export const setFacility = (id) => {
     database.transientState.facilityId = id
 }
  
-export const setColony = (id) => {
-    database.transientState.colonyId = id
-}
-
 export const addMineralOrder = () => {
     // Copy the current state of user choices
     const newOrder = {...database.transientState}
@@ -113,7 +107,10 @@ export const addMineralOrder = () => {
 
 
 export const setGovernor = (id) => {
-    database.transientState.colonyId = id
+    database.transientState.governorId = id
+};
+export const setColony = (id) => {
+        database.transientState.colonyId = id
 };
 
 export const getCurrentState = () => {

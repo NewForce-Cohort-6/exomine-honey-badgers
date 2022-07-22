@@ -5,8 +5,6 @@
 //this module generates html
 import { getMinerals, setMineral, getFacilityMinerals, getCurrentState } from "./database.js"
 
-const facilityMinerals = getFacilityMinerals()
-
 
 document.addEventListener(
     "change",
@@ -22,21 +20,3 @@ document.addEventListener(
     }
 )
 
-
-export const Minerals = () => {
-    let html = "<ul>"
-    // Use .map() for converting objects to <li> elements
-    const items = facilityMinerals.map(mineral => {// if(){ //I think we need a filter event before the HTML
-        
-        return `<li>
-            <input type="radio" name="mineral" value="${mineral.id}"/>${mineral.quantity} tons of ${mineral.mineralId.name}
-             </li>`
-}
-)
-            debugger
-    html += items.join("")
-    html += "</ul>"
-    return html
-
-}
-    
