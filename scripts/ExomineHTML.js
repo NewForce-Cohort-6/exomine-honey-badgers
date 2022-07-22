@@ -1,11 +1,11 @@
 //This module is responsible for basic HTML format and importing/calling functions from all modules that create html
 
 //imports
-import { Governors, nameColony } from "./Governors.js"
-// import { Colony } from "./Colonies.js"
+import { Governors, nameColony, makeMineralList } from "./Governors.js"
+//import { Colony } from "./Colonies.js"
 import { Facility } from "./Facilities.js"
-// import { Minerals } from "./Minerals.js"
-// import { Orders } from "./MineralOrders.js"
+//import { Minerals } from "./Minerals.js"
+//import { Orders } from "./MineralOrders.js"
 import { addMineralOrder, getCurrentState } from "./database.js"
 
 //when customer clicks "Purchase Mineral," we need to store their choices permanently. Use transientState and addMineralOrder to click event
@@ -32,8 +32,8 @@ export const ExomineHTML = () => {
             </section>
             <section class="colonies">
                 <h2 id="taco">${nameColony()}</h2>
-                <section id="colonyMineral"></section>
-                <section>${"Colony"}</section>
+                <section id="colonyMineral">${makeMineralList()}</section>
+                
             </section>
         
             <section class="facilities">
@@ -55,4 +55,5 @@ export const ExomineHTML = () => {
         </article>
     `
 }
+//go and fix all functions before PR
 

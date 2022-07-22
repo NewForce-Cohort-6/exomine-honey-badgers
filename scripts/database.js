@@ -110,7 +110,7 @@ export const setGovernor = (id) => {
     database.transientState.governorId = id
 };
 export const setColony = (id) => {
-        database.transientState.colonyId = id
+    database.transientState.colonyId = id
 };
 
 export const getCurrentState = () => {
