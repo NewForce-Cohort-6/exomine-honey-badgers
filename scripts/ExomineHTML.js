@@ -3,7 +3,7 @@
 //imports
 import { Governors, nameColony, makeMineralList } from "./Governors.js"
 //import { Colony } from "./Colonies.js"
-import { Facility } from "./Facilities.js"
+import { Facility, Minerals } from "./Facilities.js"
 //import { Minerals } from "./Minerals.js"
 //import { Orders } from "./MineralOrders.js"
 import { addMineralOrder, getCurrentState } from "./database.js"
@@ -44,7 +44,7 @@ export const ExomineHTML = () => {
         <article id="lower">
             <section class="minerals">
                 <h2>Facility Minerals for ?</h2>
-                <section>${"Minerals"}</section>
+                <section>${Minerals()}</section>
             </section>
             <section class="spaceCart">
                 <h2>Space Cart</h2>
