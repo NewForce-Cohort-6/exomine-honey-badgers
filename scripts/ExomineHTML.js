@@ -4,7 +4,7 @@
 import { Governors, nameColony, makeMineralList } from "./Governors.js"
 //import { Colony } from "./Colonies.js"
 import { Facility } from "./Facilities.js"
-//import { Minerals } from "./Minerals.js"
+import { Minerals } from "./Facilities.js"
 //import { Orders } from "./MineralOrders.js"
 import { addMineralOrder, getCurrentState } from "./database.js"
 

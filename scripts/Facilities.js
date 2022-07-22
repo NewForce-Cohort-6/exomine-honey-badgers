@@ -18,16 +18,23 @@ const facilities = getFacilities()
 
 
 export const Facility = () => {
-//    let currentState = getCurrentState()
+   let currentState = getCurrentState()
 // with just if(currentState) we have all dropdown all the time
     // if (currentState.colonyId) {
     let html = `<select id="facilityChoices">`
     html += `<option value="0">Select a Facility</option>`
-    html += `<></option>`
+    
     const listFacilities = facilities.map( (facility) => {
         if (facility.activeStatus === true) {
+            if(facility.id === currentState.facilityId){}
+
+            return `<option value="${facility.id}" selected>${facility.name}</option>`
+        }else {
             return `<option value="${facility.id}">${facility.name}</option>`
         }
+        
+        }
+        
     })
             html += listFacilities.join("")
             html += `</select>`
@@ -40,37 +47,43 @@ export const Facility = () => {
 // Then the list of available minerals should appear
 // And the available amount should be displayed next to the name of the mineral, if there are more than 0 of that mineral available
 
-// document.addEventListener(
-//     "change",
-//     (e) => {
-//         if (e.target.id === 'facilityChoices') {
-//             setFacility(parseInt(e.target.value))
-//         // call a function? from what i'm doing line 50 /radiobuttons?
+document.addEventListener(
+    "change",
+    (e) => {
+        if (e.target.id === 'facilityChoices') {
+            setFacility(parseInt(e.target.value))
+        // call a function? from what i'm doing line 50 /radiobuttons?
 
-//         }
-//     }
-// )
+        }
+    }
+)
 
 //write function that if (facility is chosen) {display radio buttons}
 // export const Minerals = () => {
     
 // }
-//will this change ExomineHTML if we call Minerals() inside this event listener? So I won't be calling it again?
 
-/*export const Minerals = () => {
+
+export const Minerals = () => {
+    const minerals = getMinerals()
     let html = "<ul>"
     // Use .map() for converting objects to <li> elements
-    const items = facilityMinerals.map(mineral => {
-        return `<li>
-            <input type="radio" name="mineral" value="${mineral.id}" />${mineral.quantity} tons of ${mineral.name}
-        </li>`
-        })
+    let facilityState = getCurrentState()
+    const items = facilityMinerals.filter(singleFacility => singleFacility.facilityId === facilityState.facilityId) 
+    // console.log(items, facilityState.mineralId)
+    debugger
+   
+    const mineralButtons = items.map(item => minerals.filter(singleMineral => singleMineral.id === item.mineralId ))
+            return singleMineral.name
+    //     return `<li> 
+    //         <input type="radio" name="mineral" value="${mineral.id}" />${mineral.quantity} tons of ${mineral.name}
+    //     </li>`
+    //     }
     html += items.join("")
     html += "</ul>"
     return html
-    
 }
- */
+ 
 // Given the user wants to purchase from another facility
 // When the user chooses a different facility
 // Then the last chosen facility's minerals should not be rendered
