@@ -35,11 +35,12 @@ export const ExomineHTML = () => {
                 <section id="colonyMineral">${makeMineralList()}</section>
                 
             </section>
-        
+        </article>
+        <article id="chooseFacility">
             <section class="facilities">
                     <h2>Choose a Facility</h2>
                     <section>${currentState.colonyId ? Facility():""}</section>
-            </section>
+            </section> <br>
         </article>
         <article id="lower">
             <section class="minerals">
