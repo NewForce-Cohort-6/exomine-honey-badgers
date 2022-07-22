@@ -98,5 +98,3 @@ document.addEventListener(
 // And the list of available minerals should appear for the currently chosen facility
 
 // Hint: You need to filter the array of facility minerals on the facilityId foreign key as the first step. It should match the id of the facility chosen by the user. Where do you store which facility was chosen by the user?
-
-
