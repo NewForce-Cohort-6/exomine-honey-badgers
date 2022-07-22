@@ -22,6 +22,7 @@ export const Facility = () => {
 // with just if(currentState) we have all dropdown all the time
     // if (currentState.colonyId) {
     let html = `<select id="facilityChoices">`
+    html += `<option value="0">Select a Facility</option>`
     html += `<></option>`
     const listFacilities = facilities.map( (facility) => {
         if (facility.activeStatus === true) {
