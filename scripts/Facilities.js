@@ -5,7 +5,8 @@
 //this module receives information from MineralOrders about how much remaining qty of mineral to display
 //import { getInfoFunctionNameHere } from "./MineralOrders.js" obv rename
 
-import { getFacilities, setFacility, getMinerals, getFacilityMinerals, getCurrentState } from "./database.js";
+import { getFacilities, setFacility, getMinerals, getFacilityMinerals, getCurrentState, getMineralOrders } from "./database.js";
+
 
 const facilities = getFacilities()
 const facilityMinerals = getFacilityMinerals()
@@ -73,13 +74,14 @@ document.addEventListener(
             let html = "<ul>"
             // Use .map() for converting objects to <li> elements
             let facilityState = getCurrentState()
+            const minOrders = getMineralOrders()
             const items = facilityMinerals.filter(singleFacility => singleFacility.facilityId === facilityState.facilityId)
             // console.log(items, facilityState.mineralId)
             //        const filteredForColony = mineralOrds.filter(x => x.colonyId === mineralState.colonyId)
             //want to get array back from bridge table and get specific mineral. We have the facility and we can pull the qty of a mineral, but we only have the mineral id. We need to match the mineral id to the mineral name.
             const mineralButtons = items.map((item) =>  {
                 const taco = minerals.find((singleMineral) => singleMineral.id === item.mineralId) 
-                return `<input type="radio" name="mineral" value="${taco.id}" /> ${item.quantity} tons of ${taco.name}</li>`}) //stopped here 
+                return `<input type="radio" name="mineral" value="${taco.id}" /> ${item.quantity-minOrders.filter(taco => taco.mineralId === item.mineralId).length} tons of ${taco.name}</li>`}) //stopped here 
             
             // (mineral => {
                 //     return `<li>
