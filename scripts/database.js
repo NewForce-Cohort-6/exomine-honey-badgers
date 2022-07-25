@@ -117,4 +117,6 @@ export const getCurrentState = () => {
     return database.transientState
 };
 
-
+export const setCurrentState = () => {
+    database.transientState.mineralId = id
+}
