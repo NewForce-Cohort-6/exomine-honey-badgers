@@ -86,14 +86,14 @@ export const setFacility = (id) => {
  
 export const addMineralOrder = () => {
     // Copy the current state of user choices
-    const newOrder = {...database.transientState}
+    const newOrder = {mineralId: database.transientState.mineralId, colonyId: database.transientState.colonyId}
  
     // Add a new primary key to the object
     const lastIndex = database.mineralOrders.length - 1
     newOrder.id = database.mineralOrders[lastIndex].id + 1
  
     // Add a timestamp to the order
-    newOrder.timestamp = Date.now()
+    // newOrder.timestamp = Date.now()
  
     // Add the new order object to custom orders state
     database.mineralOrders.push(newOrder)

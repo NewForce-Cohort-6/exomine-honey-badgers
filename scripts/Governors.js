@@ -73,18 +73,23 @@ export const makeMineralList = () => {
         const findMinerals = filteredForColony.map( filteredObj => minerals.find(singleMineral => singleMineral.id === filteredObj.mineralId))
         console.log(findMinerals)
     // pretty much same as below
-
+    
+    // below here is keeping track of what mineral, but not how many
         let html = ""
         for (const item of mineralOrds) {
+            
             if (mineralState.colonyId === item.colonyId) {
+
                 for (const min of minerals) {
                     if (min.id === item.mineralId) {
+                                                
                         // change the p tags if you wish
-                html += `<p>${min.name}</p>`
+                html += `<p> tons of ${min.name}</p>`
             }
         }
         }
         }
+        
         return html
     
 }
