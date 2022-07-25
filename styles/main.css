@@ -17,17 +17,41 @@ h1,h2,h3,h4,h5,h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
 }
+.spaceCart {
+	border: dotted rgb(54, 133, 158);
+    border-radius: 25px;
+    padding: 20px;  
+	width: 200px;
+	justify-content: center;
+}
+
+#orderButton {
+    margin: 1rem 0 2rem 2rem;
+    padding: 0.5rem;
+    background-color: rgb(143, 85, 224);
+    font-size: 1rem;
+}
 
 .minerals {
-	border: 1px dotted black
-}
-.spaceCart {
-	border: 1px dotted coral;
+	border: dotted black;
+	border-radius: 25px;
+	padding: 20px;
+	width: 350px;
 }
 
+#upper {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+		
+}
+.governors {
+	width: 475px;
+}
 
 #lower {
-	border: 3px solid green;
-	flex: wrap;
-	flex-wrap: wrap
+	/* border: 3px solid green; */
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
 }
