@@ -4,9 +4,10 @@
 import { Governors, nameColony, makeMineralList } from "./Governors.js"
 //import { Colony } from "./Colonies.js"
 import { Facility, Minerals } from "./Facilities.js"
-//import { Minerals } from "./Minerals.js"
+import { spaceCartText } from "./Minerals.js"
 //import { Orders } from "./MineralOrders.js"
 import { addMineralOrder, getCurrentState } from "./database.js"
+
 
 //when customer clicks "Purchase Mineral," we need to store their choices permanently. Use transientState and addMineralOrder to click event
 document.addEventListener(
@@ -48,7 +49,7 @@ export const ExomineHTML = () => {
             </section>
             <section class="spaceCart">
                 <h2>Space Cart</h2>
-                <div class= "ton">Place Holder</div>
+                <div class= "ton">${currentState.mineralId ? spaceCartText():""}</div>
                 <button id="orderButton">Purchase Mineral</button>
                 <section>${"Orders"}</section>
             </section>
