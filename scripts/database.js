@@ -99,7 +99,7 @@ export const addMineralOrder = () => {
     database.mineralOrders.push(newOrder)
  
     // Reset the temporary state for user choices
-    database.transientState = {}
+   // database.transientState = {}
  
     // Broadcast a notification that permanent state has changed
     document.dispatchEvent(new CustomEvent("stateChanged"))
