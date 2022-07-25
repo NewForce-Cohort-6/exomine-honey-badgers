@@ -1,4 +1,4 @@
-import { getMineralOrders, getMinerals, getFacilities, getColonies, getCurrentState, getFacilityMinerals, addMineralOrder } from "./database.js"
+import { getMineralOrders, getMinerals, getFacilities, getColonies, getCurrentState, getFacilityMinerals, setCurrentState } from "./database.js"
 
 
 //we think we might be doing the math to decrease facility mineral quantity in this module, but not certain
@@ -13,16 +13,33 @@ const minerals = getMinerals()
 const mineralFacilities = getFacilityMinerals()
 
 
-
-
-export const addMineralOrder = () => {
-    //get currentState
-   const Order = getCurrentState()
-   const chosenColony = filteredColony(Order.colonyId)
-   const chosenFacility = filteredFacility(Order.facilityId)
-   const chosenMineral = filteredMineral(Order.mineralId)
-
+export const buildOrderListItem = (Orders) => {
+    const Order = getCurrentState()
     getMineralOrders()
+}
+
+export const Orders = () => {
+    
+    const orders = getMineralOrders()
+
+    let html = "<ul>"
+
+    const listItems = orders.map(buildOrderListItem)
+
+    html += listItems.join("")
+    html += "</ul>"
+
+    return html
+}
+
+// export const buildOrderListItem = () => {
+//     //get currentState
+//    const Order = getCurrentState()
+//    const chosenColony = filteredColony(Order.colonyId)
+//    const chosenFacility = filteredFacility(Order.facilityId)
+//    const chosenMineral = filteredMineral(Order.mineralId)
+
+//     getMineralOrders()
      
     const filteredMineral = (mineralId) => {
         for (min of minerals) {
@@ -52,31 +69,23 @@ export const addMineralOrder = () => {
     
 
 // numbers change in 2 places.  Do I need to write both math and html here and export to??
-}
+
 
 const subtractMineral = (mineralId, facilityId) => {
     for (const item of mineralFacilities) {
         if(item.mineralId === mineralId && item.facilityId === facilityId) {
             if(item.quantity > 0) {
-                
+               setCurrentState("amount", item.quantity -1)
+               const transState = getCurrentState()
+
+            } else {
+                return null
             }
         }
     }
 }
 
-export const Orders = () => {
-    
-    const orders = getMineralOrders()
 
-    let html = "<ul>"
-
-    const listItems = orders.map(buildOrderListItem)
-
-    html += listItems.join("")
-    html += "</ul>"
-
-    return html
-}
 // transient state will be needed to update facility mineral quantity
 // export const totalQuantity = foundMineral.quantity - 1
 //         return `<li>

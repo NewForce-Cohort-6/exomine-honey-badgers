@@ -3,10 +3,10 @@
 //imports
 import { Governors, nameColony, makeMineralList } from "./Governors.js"
 //import { Colony } from "./Colonies.js"
-import { Facility, Minerals } from "./Facilities.js"
+import { Facility, Minerals, nameFacility } from "./Facilities.js"
 //import { Minerals } from "./Minerals.js"
 import { Orders } from "./MineralOrders.js"
-import { addMineralOrder, getCurrentState } from "./database.js"
+import { addMineralOrder, getCurrentState, getFacilities, setFacility } from "./database.js"
 
 //when customer clicks "Purchase Mineral," we need to store their choices permanently. Use transientState and addMineralOrder to click event
 document.addEventListener(
@@ -44,7 +44,8 @@ export const ExomineHTML = () => {
         </article>
         <article id="lower">
             <section class="minerals">
-                <h2>Facility Minerals for ?</h2>
+                <h2>Facility Minerals for ${nameFacility()} 
+                </h2>
                 <section>${Minerals()}</section>
             </section>
             <section class="spaceCart">
