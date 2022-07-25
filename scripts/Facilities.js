@@ -74,7 +74,7 @@ document.addEventListener(
             // Use .map() for converting objects to <li> elements
             let facilityState = getCurrentState()
             const items = facilityMinerals.filter(singleFacility => singleFacility.facilityId === facilityState.facilityId)
-            console.log(items, facilityState.mineralId)
+            // console.log(items, facilityState.mineralId)
             //        const filteredForColony = mineralOrds.filter(x => x.colonyId === mineralState.colonyId)
             //want to get array back from bridge table and get specific mineral. We have the facility and we can pull the qty of a mineral, but we only have the mineral id. We need to match the mineral id to the mineral name.
             const mineralButtons = items.map((item) =>  {
