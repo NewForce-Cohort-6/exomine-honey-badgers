@@ -92,6 +92,7 @@ export const makeMineralList = () => {
         }
         }
         
+
         return html
     
 }
